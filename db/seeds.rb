@@ -5,6 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-50.times {
-  Ingredient.create(name: Faker::Lovecraft.deity)
+10.times {
+  Ingredient.create(name: Faker::Lovecraft.words(2).join(" "))
 }

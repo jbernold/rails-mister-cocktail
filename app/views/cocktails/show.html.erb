@@ -1,12 +1,19 @@
 <h2><%= @cocktail.name %></h2>
 <ul>
   <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.description %> <%= dose.ingredient.name %></li>
+    <li><%= dose.description %> <%= dose.ingredient.name %>
+     <%= link_to '<i class="fa fa-trash-alt"></i>'.html_safe, dose_path(dose), method: "delete", id: "sweet-alert-delete" %>
+</li>
   <% end %>
 </ul>
 
-<p><%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %></p>
-
-
 <p><%= link_to "Back Home", cocktails_path %></p>
 <p><%= link_to "Edit", edit_cocktail_path(@cocktail) %></p>
+
+<h1>Add another dose of some sweet, sweet ingredient</h1>
+
+<%= simple_form_for([@cocktail, Dose.new]) do |f| %>
+  <%= f.input :ingredient_id, label: 'What shall we add?', collection: Ingredient.all %>
+  <%= f.input :description, label: 'How much?' %>
+  <%= f.submit %>
+<% end %>

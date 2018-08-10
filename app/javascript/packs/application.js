@@ -9,4 +9,5 @@
 
 console.log('Hello World from Webpacker')
 import 'bootstrap';
-
+import { bindSweetAlertDelete } from '../components/alerts';
+bindSweetAlertDelete();
